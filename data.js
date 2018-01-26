@@ -75,10 +75,7 @@ const videos = [
     title: "Never Write Another Hoc",
     date: new Date("Sep 17, 2017"),
     event: "phoenix-react-js",
-    source: {
-      origin: "youtube",
-      url: "https://www.youtube.com/watch?v=BcVAq3YFiuc"
-    },
+    source: "https://www.youtube.com/watch?v=BcVAq3YFiuc",
     duration: "51:06",
     technologies: ["hoc", "recompose", "react"]
   },
@@ -88,10 +85,7 @@ const videos = [
     title: "Relay Modern",
     date: new Date("24 May, 2017"),
     event: "react-europe-2017",
-    source: {
-      origin: "youtube",
-      url: "https://www.youtube.com/watch?v=OdsMz7h_Li0"
-    },
+    source: "https://www.youtube.com/watch?v=OdsMz7h_Li0",
     duration: "27:32",
     technologies: ["relay", "graphql", "react"]
   },
@@ -101,10 +95,7 @@ const videos = [
     title: "The Redux Journey",
     date: new Date("Jun 4, 2016"),
     event: "react-europe-2016",
-    source: {
-      origin: "youtube",
-      url: "https://www.youtube.com/watch?v=uvAXVMwHJXU"
-    },
+    source: "https://www.youtube.com/watch?v=uvAXVMwHJXU",
     duration: "25:56",
     technologies: ["redux", "react"]
   },
@@ -116,10 +107,7 @@ const videos = [
       "One of the greatest challenges of building a rich UI is keeping track of all that is changing: incoming touch and mouse events, new data from your servers, animations, and more. Here we propose a new way to tackle this challenge that is as old as computing itself: don’t let anything change in the first place.\nCome learn about how to build rich and highly performant UIs without losing your sanity by leveraging immutable data and the optimization techniques it enables.",
     date: new Date("22 April, 2016"),
     event: "render-2016",
-    source: {
-      origin: "vimeo",
-      url: "https://vimeo.com/166790294"
-    },
+    source: "https://vimeo.com/166790294",
     duration: "29:34",
     technologies: ["immutable-js", "react"]
   },
@@ -129,10 +117,7 @@ const videos = [
     title: "Live React: Hot Reloading with Time Travel",
     date: new Date("Jul 5, 2015"),
     event: "react-europe-2015",
-    source: {
-      origin: "youtube",
-      url: "https://www.youtube.com/watch?v=xsSnOQynTHs"
-    },
+    source: "https://www.youtube.com/watch?v=xsSnOQynTHs",
     duration: "30:40",
     technologies: ["redux", "react"]
   }
