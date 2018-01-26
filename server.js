@@ -3,9 +3,12 @@ import schema from "./schema";
 // new dependencies
 import { graphql } from "graphql";
 import graphqlHTTP from "express-graphql";
+import cors from "cors";
 
 let app = express();
 let PORT = 3000;
+
+app.use(cors());
 
 app.use(
   "/graphql",
