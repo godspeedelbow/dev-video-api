@@ -16,7 +16,9 @@ import {
   getSpeakerByName,
   getTechnologyByName,
   getEventByName,
-  getVideosBySpeaker
+  getVideosBySpeaker,
+  getVideosByTechnology,
+  getVideosByEvent
 } from "./data";
 
 var SpeakerType = new GraphQLObjectType({
@@ -55,6 +57,10 @@ var TechnologyType = new GraphQLObjectType({
       },
       title: {
         type: GraphQLString
+      },
+      videos: {
+        type: new GraphQLList(VideoType),
+        resolve: ({ name }) => getVideosByTechnology(name)
       }
     };
   }
@@ -75,6 +81,10 @@ var EventType = new GraphQLObjectType({
       },
       logo: {
         type: GraphQLString
+      },
+      videos: {
+        type: new GraphQLList(VideoType),
+        resolve: ({ name }) => getVideosByEvent(name)
       }
     };
   }
@@ -124,11 +134,15 @@ var queryType = new GraphQLObjectType({
           return videos;
         }
       },
-      technologies: {
-        type: new GraphQLList(TechnologyType),
-        resolve: function() {
-          return technologies;
-        }
+      technology: {
+        type: TechnologyType,
+        args: {
+          name: {
+            description: "name of the technology",
+            type: new GraphQLNonNull(GraphQLString)
+          }
+        },
+        resolve: (root, { name }) => getTechnologyByName(name)
       },
       speaker: {
         type: SpeakerType,
@@ -140,11 +154,18 @@ var queryType = new GraphQLObjectType({
         },
         resolve: (root, { name }) => getSpeakerByName(name)
       },
-      events: {
-        type: new GraphQLList(EventType),
+      event: {
+        type: EventType,
         resolve: function() {
           return events;
-        }
+        },
+        args: {
+          name: {
+            description: "name of the event",
+            type: new GraphQLNonNull(GraphQLString)
+          }
+        },
+        resolve: (root, { name }) => getEventByName(name)
       }
     };
   }

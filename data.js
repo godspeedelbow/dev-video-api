@@ -150,4 +150,4 @@ export const getEventByName = name => eventsByName[name];
 export const getTechnologyByName = name => technologiesByName[name];
 export const getVideosBySpeaker = speaker => videosBySpeaker[speaker];
 export const getVideosByEvent = event => videosByEvent[event];
-export const getVideosByTech = tech => videosByTech[tech];
+export const getVideosByTechnology = tech => videosByTech[tech];
