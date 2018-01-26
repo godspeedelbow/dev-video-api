@@ -4,7 +4,8 @@ import {
   GraphQLString,
   GraphQLList,
   GraphQLBoolean,
-  GraphQLInt
+  GraphQLInt,
+  GraphQLNonNull
 } from "graphql";
 
 import {
@@ -14,7 +15,8 @@ import {
   technologies,
   getSpeakerByName,
   getTechnologyByName,
-  getEventByName
+  getEventByName,
+  getVideosBySpeaker
 } from "./data";
 
 var SpeakerType = new GraphQLObjectType({
@@ -35,6 +37,10 @@ var SpeakerType = new GraphQLObjectType({
       },
       github: {
         type: GraphQLString
+      },
+      videos: {
+        type: new GraphQLList(VideoType),
+        resolve: ({ name }) => getVideosBySpeaker(name)
       }
     };
   }
@@ -124,11 +130,15 @@ var queryType = new GraphQLObjectType({
           return technologies;
         }
       },
-      speakers: {
-        type: new GraphQLList(SpeakerType),
-        resolve: function() {
-          return speakers;
-        }
+      speaker: {
+        type: SpeakerType,
+        args: {
+          name: {
+            description: "name of the speaker",
+            type: new GraphQLNonNull(GraphQLString)
+          }
+        },
+        resolve: (root, { name }) => getSpeakerByName(name)
       },
       events: {
         type: new GraphQLList(EventType),
